@@ -46,7 +46,10 @@ parser.add_argument(
 )
 
 args = parser.parse_args()
+args, unknown = parser.parse_known_args()
 
+print("ARGS:", args, flush=True)
+print("UNKNOWN:", unknown, flush=True)
 INPUT_FILE = Path(args.input)
 OUTPUT_FILE = Path(args.output)
 
