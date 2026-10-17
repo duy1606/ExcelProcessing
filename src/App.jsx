@@ -65,13 +65,6 @@ export default function App() {
       alert("Vui lòng nhập sheet.");
       return;
     }
-
-    // Hiện tại mới tích hợp script xử lý chiết khấu
-    if (selectedFunction !== "discount") {
-      alert("Chức năng xử lý kho chưa được tích hợp.");
-      return;
-    }
-
     try {
       setStatus("processing");
 
@@ -92,8 +85,12 @@ export default function App() {
       const inputPath = `/input${extension}`;
       const outputPath = `/output${extension}`;
 
-      const scriptPath = "/discount_processing.py";
+      const scriptName =
+        selectedFunction === "discount"
+          ? "discount_processing.py"
+          : "inventory_processing.py";
 
+      const scriptPath = `/${scriptName}`;
       // ==========================
       // 3. Đưa file Excel vào
       //    filesystem của Pyodide
@@ -139,8 +136,14 @@ export default function App() {
 
       const args = [scriptPath, inputPath, outputPath];
 
-      if (sheetName.trim()) {
-        args.push("--sheet", sheetName.trim());
+      if (selectedFunction === "discount") {
+        if (sheetName.trim()) {
+          args.push("--sheet", sheetName.trim());
+        }
+      }
+
+      if (selectedFunction === "inventory") {
+        args.push("--sheet-ma", "mã rượu", "--sheet-ton", "tồn rượu");
       }
 
       console.log("Python args:", args);
