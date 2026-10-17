@@ -111,7 +111,7 @@ export default function App() {
       // 4. Load script Python
       // ==========================
 
-      const scriptUrl = `${import.meta.env.BASE_URL}python/discount_processing.py`;
+      const scriptUrl = `${import.meta.env.BASE_URL}python/${scriptName}`;
 
       const response = await fetch(scriptUrl);
 
