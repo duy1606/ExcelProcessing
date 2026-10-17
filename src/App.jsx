@@ -143,7 +143,7 @@ export default function App() {
       }
 
       if (selectedFunction === "inventory") {
-        args.push("--sheet-ma", "mã rượu", "--sheet-ton", "tồn rượu");
+        //  args.push("--sheet-ma", "mã rượu", "--sheet-ton", "tồn rượu");
       }
 
       console.log("Python args:", args);
