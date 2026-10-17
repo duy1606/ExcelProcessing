@@ -61,10 +61,10 @@ export default function App() {
       alert("Vui lòng chọn file Excel.");
       return;
     }
-    if (!sheetName) {
-      alert("Vui lòng nhập sheet.");
-      return;
-    }
+    // if (!sheetName) {
+    //   alert("Vui lòng nhập sheet.");
+    //   return;
+    // }
     try {
       setStatus("processing");
 
